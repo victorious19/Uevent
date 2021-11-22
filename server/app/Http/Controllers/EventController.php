@@ -26,7 +26,7 @@ class EventController extends Controller
             $request["user_id"] = $user->id;
         else
             $request["company_id"] = $user->company()->id;
-        $request["theme"] = $user->theme();
+        $request["theme_id"] = $user->theme()->id;
 
         return User::create($request->all());
 
