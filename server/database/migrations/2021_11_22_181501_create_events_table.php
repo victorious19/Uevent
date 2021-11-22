@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->integer('tickets');
             $table->string('date');
             $table->integer('price');
-            $table->string('card_number');
+            $table->string('card_number')->nullable();
             $table->string('description');
             $table->string('organizer_info')->nullable();
             $table->enum('format',['conference', 'lecture', 'workshop', 'fest'])->default('fest');
