@@ -13,4 +13,13 @@ class ThemeController extends Controller
         ]);
         return Theme::create($request->title);
     }
+    function delete($theme_id) {
+        $theme = Theme::find($theme_id);
+        if(!$theme) return response(['status' => 'error', 'message' => 'Theme not found'], 404);
+
+        return $theme->delete();
+    }
+    function get_all() {
+        return Theme::all();
+    }
 }

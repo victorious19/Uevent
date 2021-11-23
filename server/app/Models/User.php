@@ -15,9 +15,6 @@ class User extends Authenticatable
     function company() {
         return $this->belongsTo(Company::class);
     }
-    function theme() {
-        return $this->hasOne(Theme::class);
-    }
 
     /**
      * The attributes that are mass assignable.

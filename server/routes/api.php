@@ -22,16 +22,29 @@ Route::group(['prefix' => 'auth'], function() {
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
+Route::group(['prefix' => 'company'], function() {
+    Route::get('{company_id}', 'App\Http\Controllers\CompanyController@get');
+});
+Route::group(['prefix' => 'theme'], function() {
+    Route::get('', 'App\Http\Controllers\ThemeController@get_all');
+});
+Route::group(['prefix' => 'events'], function() {
+    Route::get('', 'App\Http\Controllers\EventController@get_all');
+});
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::group(['prefix' => 'events'], function() {
         Route::get('', 'App\Http\Controllers\EventController@get_all');
-        Route::post('', 'App\Http\Controllers\EventController@create');
+        Route::patch('{event_id}', 'App\Http\Controllers\EventController@change');
+        Route::delete('{event_id}', 'App\Http\Controllers\EventController@delete');
     });
     Route::group(['prefix' => 'theme'], function() {
-        Route::get('', 'App\Http\Controllers\ThemeController@create');
+        Route::post('', 'App\Http\Controllers\ThemeController@create');
+        Route::delete('{theme_id}', 'App\Http\Controllers\ThemeController@create');
     });
     Route::group(['prefix' => 'company'], function() {
-        Route::get('', 'App\Http\Controllers\CompanyController@create');
+        Route::post('', 'App\Http\Controllers\CompanyController@create');
+        Route::patch('{company_id}', 'App\Http\Controllers\CompanyController@change');
+        Route::delete('{company_id}', 'App\Http\Controllers\CompanyController@delete');
     });
 });

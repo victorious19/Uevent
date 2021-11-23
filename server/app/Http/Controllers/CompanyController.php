@@ -17,4 +17,25 @@ class CompanyController extends Controller
 
         return Company::create($request->all());
     }
+    function change(Request $request, $company_id) {
+        $company = Company::find($company_id);
+
+        if(!$company) return response(['status' => 'error', 'message' => 'Company not found'], 404);
+        if($request->get('user_id')) unset($request["user_i"]);
+        $company->update($request->all());
+
+        return $company;
+    }
+    function delete($company_id) {
+        $company = Company::find($company_id);
+
+        if(!$company) return response(['status' => 'error', 'message' => 'Company not found'], 404);
+        return $company->delete();
+    }
+    function get($company_id) {
+        $company = Company::find($company_id);
+
+        if(!$company) return response(['status' => 'error', 'message' => 'Company not found'], 404);
+        return $company;
+    }
 }
