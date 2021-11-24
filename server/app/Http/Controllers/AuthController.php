@@ -16,8 +16,9 @@ class AuthController extends Controller
             'full_name' => 'required'
         ]);
         $request['password'] = bcrypt($request['password']);
+        unset($request["role"]);
         $user = User::create($request->all());
-        $token = $user->createToken('chronos')->plainTextToken;
+        $token = $user->createToken('uevent')->plainTextToken;
 
         $response = [
             'user' => $user,
