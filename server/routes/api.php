@@ -34,7 +34,6 @@ Route::group(['prefix' => 'events'], function() {
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::group(['prefix' => 'events'], function() {
-        Route::get('', 'App\Http\Controllers\EventController@get_all');
         Route::patch('{event_id}', 'App\Http\Controllers\EventController@change');
         Route::delete('{event_id}', 'App\Http\Controllers\EventController@delete');
     });
