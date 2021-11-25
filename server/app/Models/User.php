@@ -28,6 +28,7 @@ class User extends Authenticatable
         'picture',
         'full_name',
         'role',
+        'company_id'
     ];
 
     /**
