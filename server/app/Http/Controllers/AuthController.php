@@ -29,15 +29,15 @@ class AuthController extends Controller
     function login(Request $request)
     {
         $request->validate([
-            'login' => 'required|string|max:30',
+            'username' => 'required|string|max:30',
             'password'=>'required|string|min:8'
         ]);
-        $auth = $request->only(['login', 'password']);
-        if (empty($auth['login']) or empty($auth['password'])) {
+        $auth = $request->only(['username', 'password']);
+        if (empty($auth['username']) or empty($auth['password'])) {
             return response(['message' => "Empty fields"], 422);
         }
-        $user = User::where('login', $auth['login'])->first();
-        if (empty($user)) $user = User::where('email', $auth['login'])->first();
+        $user = User::where('username', $auth['username'])->first();
+        if (empty($user)) $user = User::where('email', $auth['username'])->first();
         if (empty($user) or !Hash::check($auth['password'], $user->password)) {
             return response(['message' => "Bad login or password"], 400);
         }
