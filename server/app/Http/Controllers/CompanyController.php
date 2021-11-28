@@ -21,7 +21,7 @@ class CompanyController extends Controller
         $company = Company::find($company_id);
 
         if(!$company) return response(['status' => 'error', 'message' => 'Company not found'], 404);
-        if($request->get('user_id')) unset($request["user_i"]);
+        if($request->get('user_id')) unset($request["user_id"]);
         $company->update($request->all());
 
         return $company;
