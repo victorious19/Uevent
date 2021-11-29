@@ -14,7 +14,7 @@ class CompanyController extends Controller
             'location' => 'required'
         ]);
         $company = Company::create($request->all());
-        auth()->user()["company_id"] = $company->id;
+        auth()->user()->update(["company_id" => $company->id]);
 
         return $company;
     }
