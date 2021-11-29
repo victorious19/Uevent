@@ -38,6 +38,7 @@ Route::group(['prefix' => 'events'], function() {
 //ДЛЯ АВТОРИЗИРОВАННЫХ
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::group(['prefix' => 'events'], function() {
+        Route::post('', 'App\Http\Controllers\EventController@create');              //создать событие
         Route::patch('{event_id}', 'App\Http\Controllers\EventController@change');   //изменить событие
         Route::delete('{event_id}', 'App\Http\Controllers\EventController@delete');  //удалить событие
     });
