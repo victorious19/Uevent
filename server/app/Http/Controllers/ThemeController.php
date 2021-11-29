@@ -11,7 +11,7 @@ class ThemeController extends Controller
         $request->validate([
             'title' => 'required'
         ]);
-        return Theme::create($request->title);
+        return Theme::create(['title' => $request->title]);
     }
     function delete($theme_id) {
         $theme = Theme::find($theme_id);
