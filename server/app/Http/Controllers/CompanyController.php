@@ -13,6 +13,7 @@ class CompanyController extends Controller
             'email' => 'required',
             'location' => 'required'
         ]);
+        if(auth()->user()->company()) return response(['status' => 'error', 'message' => 'Company already exists'], 422);
         $company = Company::create($request->all());
         auth()->user()->update(["company_id" => $company->id]);
 
