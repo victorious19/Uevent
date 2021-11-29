@@ -1,23 +1,20 @@
 <template>
-  <div id="app">
-      <router-view></router-view>
-  </div>
+  <v-app>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <Nav />
+    <router-view />
+  </v-app>
 </template>
 
 <script>
+import Nav from '../src/components/Nav'
 
 export default {
   name: 'App',
-}
-</script>
+  components: {
+    Nav
+  }
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+};
+</script>

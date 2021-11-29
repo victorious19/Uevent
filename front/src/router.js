@@ -1,24 +1,24 @@
 import Vue from "vue"
 import Router from 'vue-router'
-import home from './components/HelloWorld.vue'
-import Awd from './components/Auth.vue'
+import Auth from './components/Auth.vue'
+import Home from './components/Home'
 
 Vue.use(Router)
 
-const router = new Router ({
-  mode: 'history',
-  routes: [
+const routes = [
+    {
+      path: '/Auth',
+      component: Auth
+    },
     {
       path: '/',
-      name: 'awd',
-      component: Awd
-    },
-    {
-      path: '/hello',
-      name: 'home',
-      component: home,
+      component: Home,
     },
   ]
-})
 
-export default router
+
+// export default router
+export default new Router({
+  mode: 'history',
+  routes
+})
