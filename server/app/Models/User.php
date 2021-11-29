@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     function company() {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class)->first();
     }
 
     /**
@@ -38,7 +38,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token'
+        'remember_token',
     ];
 
     /**

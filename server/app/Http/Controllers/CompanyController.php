@@ -13,9 +13,11 @@ class CompanyController extends Controller
             'email' => 'required',
             'location' => 'required'
         ]);
-        $request["user_id"] = auth()->user()->id;
+        if(auth()->user()->company()) return response(['status' => 'error', 'message' => 'Company already exists'], 422);
+        $company = Company::create($request->all());
+        auth()->user()->update(["company_id" => $company->id]);
 
-        return Company::create($request->all());
+        return $company;
     }
     function change(Request $request, $company_id) {
         $company = Company::find($company_id);
