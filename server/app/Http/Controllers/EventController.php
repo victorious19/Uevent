@@ -21,6 +21,7 @@ class EventController extends Controller
             'publishing_date' => 'date'
         ]);
         $user = auth()->user();
+        if(!$user->company()) return response(['status' => 'error', 'message' => 'Access forbidden for people without company'], 401);
         $request = $this->owner_update($request, $user);
 
         return Event::create($request->all());
