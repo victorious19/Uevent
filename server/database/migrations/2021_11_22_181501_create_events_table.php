@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
-            $table->foreignId('company_id')->nullable()->constrained('companies');
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
             $table->foreignId('theme_id')->constrained('themes');
             $table->string('poster')->default('default.png');
             $table->integer('tickets');
